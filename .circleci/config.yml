@@ -1,6 +1,11 @@
 version: 2.1
-
+commands:
+  print_pipeline_id:
+    description: "Printing the ID of out pipeline"
+    steps:
+      - run: echo $CIRCLE_WORKFLOW_ID
 jobs:
+  
   save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
@@ -10,6 +15,7 @@ jobs:
           root: ~/
           paths:
             - output.txt
+            - print_pipeline_id
 
   print_output_file:
     docker:
